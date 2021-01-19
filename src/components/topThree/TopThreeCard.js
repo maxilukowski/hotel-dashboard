@@ -1,12 +1,24 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import TopThreeListByQuantity from './TopThreeListByQuantity'
+import TopThreeListByValue from './TopThreeListByValue'
 
 const TopThreeCard = () => {
+  const [toggleValueVsQuantity, setToggleValueVsQuantity] = useState(true)
   return (
     <Wrapper>
       <h1>Top Three</h1>
-      <TopThreeListByQuantity />
+      {toggleValueVsQuantity ? (
+        <TopThreeListByQuantity
+          setToggle={setToggleValueVsQuantity}
+          toggle={toggleValueVsQuantity}
+        />
+      ) : (
+        <TopThreeListByValue
+          setToggle={setToggleValueVsQuantity}
+          toggle={toggleValueVsQuantity}
+        />
+      )}
     </Wrapper>
   )
 }
