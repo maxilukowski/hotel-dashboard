@@ -8,12 +8,12 @@ const TopThreeListByQuantity = ({ setToggle, toggle }) => {
 
   return (
     <>
-      <button onClick={() => setToggle(!toggle)}>toggle</button>
-      {topThreeEntries.map(({ quantity, price, productId, supplier }) => {
+      <button onClick={() => setToggle(!toggle)}>Value</button>
+      {topThreeEntries.map(({ quantity, price, productId, productName }) => {
         return (
           <div
             key={(productId * quantity) / price}
-          >{`${quantity} - ${supplier}`}</div>
+          >{`${quantity} - ${productName}`}</div>
         )
       })}
     </>
