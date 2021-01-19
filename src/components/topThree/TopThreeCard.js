@@ -7,10 +7,14 @@ const TopThreeCard = () => {
   const [toggleValueVsQuantity, setToggleValueVsQuantity] = useState(true)
   return (
     <Wrapper>
-      <h1>Top Three</h1>
-      <button onClick={() => setToggleValueVsQuantity(!toggleValueVsQuantity)}>
-        <span>{toggleValueVsQuantity ? 'value' : 'quantity'}</span>
-      </button>
+      <Container>
+        <h1>Top Three</h1>
+        <StyledButton
+          onClick={() => setToggleValueVsQuantity(!toggleValueVsQuantity)}
+        >
+          {toggleValueVsQuantity ? 'value' : 'quantity'}
+        </StyledButton>
+      </Container>
       {toggleValueVsQuantity ? (
         <TopThreeListByQuantity />
       ) : (
@@ -26,4 +30,18 @@ const Wrapper = styled.div`
   background: var(--card);
   padding: 10px;
   border-radius: 5px;
+  margin-bottom: 20px;
+`
+
+const Container = styled.div`
+  display: flex;
+  justify-content: space-between;
+`
+
+const StyledButton = styled.button`
+  border: none;
+  color: var(--card);
+  background-color: var(--secondary);
+  border-radius: 5px;
+  height: 2rem;
 `

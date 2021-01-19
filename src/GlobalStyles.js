@@ -22,6 +22,6 @@ export default createGlobalStyle`
         background-color: var(--primary);
     }
     h1 {
-        margin:0
+        margin-top:0
     }
 `
