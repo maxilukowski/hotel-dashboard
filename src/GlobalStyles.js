@@ -12,11 +12,16 @@ export default createGlobalStyle`
     }
 
     body {
-        height: 100%;
-        margin: 0;
-        background: var(--sand);
-        color:var(--checked);
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        margin: 40px auto;
+        padding: 20px;
+        max-width:600px;
         font-family:sans-serif;
         background-color: var(--primary);
+    }
+    h1 {
+        margin-top:0
     }
 `
