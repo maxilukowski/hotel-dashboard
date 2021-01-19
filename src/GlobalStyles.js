@@ -14,8 +14,6 @@ export default createGlobalStyle`
     body {
         height: 100%;
         margin: 0;
-        background: var(--sand);
-        color:var(--checked);
         font-family:sans-serif;
         background-color: var(--primary);
     }
