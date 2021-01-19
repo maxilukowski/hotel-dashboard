@@ -1,5 +1,12 @@
+import React from 'react'
+import TopThreeCard from './components/topThree/TopThreeCard'
+
 function App() {
-  return <div>hi</div>
+  return (
+    <>
+      <TopThreeCard />
+    </>
+  )
 }
 
 export default App
