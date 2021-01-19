@@ -8,16 +8,13 @@ const TopThreeCard = () => {
   return (
     <Wrapper>
       <h1>Top Three</h1>
+      <button onClick={() => setToggleValueVsQuantity(!toggleValueVsQuantity)}>
+        <span>{toggleValueVsQuantity ? 'value' : 'quantity'}</span>
+      </button>
       {toggleValueVsQuantity ? (
-        <TopThreeListByQuantity
-          setToggle={setToggleValueVsQuantity}
-          toggle={toggleValueVsQuantity}
-        />
+        <TopThreeListByQuantity />
       ) : (
-        <TopThreeListByValue
-          setToggle={setToggleValueVsQuantity}
-          toggle={toggleValueVsQuantity}
-        />
+        <TopThreeListByValue />
       )}
     </Wrapper>
   )
