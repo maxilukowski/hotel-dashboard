@@ -1,16 +1,16 @@
 import React from 'react'
+import data from './../../AVISIO frontend challenge orders.json'
 
 const IncomingDeliveriesCard = () => {
+  const compare = (a, b) =>
+    a.deliveryDate.replace(/\//g, '') - b.deliveryDate.replace(/\//g, '')
+  const sortedData = data.sort(compare)
   return (
-    <div>
-      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nihil voluptatem
-      culpa deserunt voluptate laudantium tempore asperiores? Facere veritatis,
-      doloribus officiis voluptas quasi repudiandae ex dolore vero, iste
-      laboriosam soluta illum odit nam necessitatibus explicabo officia fugiat
-      hic eveniet alias impedit aperiam natus perspiciatis quo. Labore dolores
-      nostrum illo. Consequatur incidunt suscipit temporibus fuga nihil nostrum,
-      maxime facilis, natus beatae
-    </div>
+    <>
+      {sortedData.map(({ deliveryDate, productId }) => {
+        return <div key={productId + deliveryDate}>{deliveryDate}</div>
+      })}
+    </>
   )
 }
 
