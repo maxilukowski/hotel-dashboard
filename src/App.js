@@ -40,7 +40,7 @@ function App() {
       <DragDropContext onDragEnd={handleOnDragEnd}>
         <Droppable droppableId='dashboard-cards'>
           {(provided) => (
-            <div {...provided.droppableProps} ref={provided.innerRef}>
+            <StyledList {...provided.droppableProps} ref={provided.innerRef}>
               {cards.map(({ cardName, id }, index) => {
                 return (
                   <Draggable key={id} draggableId={id} index={index}>
@@ -57,7 +57,7 @@ function App() {
                 )
               })}
               {provided.placeholder}
-            </div>
+            </StyledList>
           )}
         </Droppable>
       </DragDropContext>
@@ -67,9 +67,12 @@ function App() {
 
 export default App
 
-const Wrapper = styled.div`
+const Wrapper = styled.li`
   background: var(--card);
   padding: 10px;
   border-radius: 5px;
   margin-bottom: 20px;
+`
+const StyledList = styled.ul`
+  list-style-type: none;
 `
