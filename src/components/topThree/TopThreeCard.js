@@ -6,7 +6,7 @@ import TopThreeListByValue from './TopThreeListByValue'
 const TopThreeCard = () => {
   const [toggleValueVsQuantity, setToggleValueVsQuantity] = useState(true)
   return (
-    <Wrapper>
+    <>
       <Container>
         <h1>Top Three</h1>
         <StyledButton
@@ -20,18 +20,11 @@ const TopThreeCard = () => {
       ) : (
         <TopThreeListByValue />
       )}
-    </Wrapper>
+    </>
   )
 }
 
 export default TopThreeCard
-
-const Wrapper = styled.div`
-  background: var(--card);
-  padding: 10px;
-  border-radius: 5px;
-  margin-bottom: 20px;
-`
 
 const Container = styled.div`
   display: flex;

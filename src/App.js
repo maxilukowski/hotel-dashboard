@@ -4,6 +4,7 @@ import OrderVolumeCard from './components/orderVolume/OrderVolumeCard'
 import SuppliersRankingCard from './components/suppliersRanking/SuppliersRankingCard'
 import TopThreeCard from './components/topThree/TopThreeCard'
 import { DragDropContext } from 'react-beautiful-dnd'
+import styled from 'styled-components'
 
 const cardComponents = [
   {
@@ -29,7 +30,7 @@ function App() {
     <>
       <DragDropContext>
         {cardComponents.map(({ cardName, id }) => {
-          return <div key={id}>{cardName}</div>
+          return <Wrapper key={id}>{cardName}</Wrapper>
         })}
       </DragDropContext>
     </>
@@ -37,3 +38,10 @@ function App() {
 }
 
 export default App
+
+const Wrapper = styled.div`
+  background: var(--card);
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+`
