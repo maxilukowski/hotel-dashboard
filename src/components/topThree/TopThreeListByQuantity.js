@@ -8,13 +8,15 @@ const TopThreeListByQuantity = () => {
 
   return (
     <>
-      {topThreeEntries.map(({ quantity, price, productId, productName }) => {
-        return (
-          <div
-            key={(productId * quantity) / price}
-          >{`${quantity} - ${productName}`}</div>
-        )
-      })}
+      {topThreeEntries.map(
+        ({ quantity, deliveryDate, productId, productName }) => {
+          return (
+            <div
+              key={productId + deliveryDate}
+            >{`${quantity} - ${productName}`}</div>
+          )
+        }
+      )}
     </>
   )
 }

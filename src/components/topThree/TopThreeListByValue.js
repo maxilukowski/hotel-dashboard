@@ -8,14 +8,16 @@ const TopThreeListByValue = () => {
 
   return (
     <>
-      {topThreeEntries.map(({ quantity, price, productId, productName }) => {
-        const value = (quantity * price).toFixed(2)
-        return (
-          <div key={(productId * quantity) / price}>
-            {`${value}$ - ${productName}`}
-          </div>
-        )
-      })}
+      {topThreeEntries.map(
+        ({ quantity, price, productId, productName, deliveryDate }) => {
+          const value = (quantity * price).toFixed(2)
+          return (
+            <div key={productId + deliveryDate}>
+              {`${value}$ - ${productName}`}
+            </div>
+          )
+        }
+      )}
     </>
   )
 }
