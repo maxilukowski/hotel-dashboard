@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import TopThreeListByQuantity from './TopThreeListByQuantity'
 import TopThreeListByValue from './TopThreeListByValue'
 
-const TopThreeCard = () => {
+const TopThreeCard = ({ data }) => {
   const [toggleValueVsQuantity, setToggleValueVsQuantity] = useState(true)
   return (
     <>
@@ -16,9 +16,9 @@ const TopThreeCard = () => {
         </StyledButton>
       </Container>
       {toggleValueVsQuantity ? (
-        <TopThreeListByQuantity />
+        <TopThreeListByQuantity data={data} />
       ) : (
-        <TopThreeListByValue />
+        <TopThreeListByValue data={data} />
       )}
     </>
   )

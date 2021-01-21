@@ -1,7 +1,6 @@
 import React from 'react'
-import data from './../../AVISIO frontend challenge orders.json'
 
-const IncomingDeliveriesCard = () => {
+const IncomingDeliveriesCard = ({ data }) => {
   const compare = (a, b) =>
     a.deliveryDate.replace(/\//g, '') - b.deliveryDate.replace(/\//g, '')
   const sortedData = data.sort(compare)

@@ -5,22 +5,23 @@ import IncomingDeliveriesCard from './components/incomingDeliveries/IncomingDeli
 import OrderVolumeCard from './components/orderVolume/OrderVolumeCard'
 import SuppliersRankingCard from './components/suppliersRanking/SuppliersRankingCard'
 import TopThreeCard from './components/topThree/TopThreeCard'
+import data from './AVISIO frontend challenge orders.json'
 
 const cardComponents = [
   {
-    cardName: <TopThreeCard />,
+    cardName: TopThreeCard,
     id: '1',
   },
   {
-    cardName: <SuppliersRankingCard />,
+    cardName: SuppliersRankingCard,
     id: '2',
   },
   {
-    cardName: <OrderVolumeCard />,
+    cardName: OrderVolumeCard,
     id: '3',
   },
   {
-    cardName: <IncomingDeliveriesCard />,
+    cardName: IncomingDeliveriesCard,
     id: '4',
   },
 ]
@@ -45,13 +46,13 @@ function App() {
                 return (
                   <Draggable key={id} draggableId={id} index={index}>
                     {(provided) => (
-                      <Wrapper
+                      <StyledLi
                         {...provided.draggableProps}
                         {...provided.dragHandleProps}
                         ref={provided.innerRef}
                       >
-                        {cardName}
-                      </Wrapper>
+                        {React.createElement(cardName, { data })}
+                      </StyledLi>
                     )}
                   </Draggable>
                 )
@@ -67,7 +68,7 @@ function App() {
 
 export default App
 
-const Wrapper = styled.li`
+const StyledLi = styled.li`
   background: var(--card);
   padding: 10px;
   border-radius: 5px;
