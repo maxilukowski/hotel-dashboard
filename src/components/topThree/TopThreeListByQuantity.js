@@ -7,15 +7,9 @@ const TopThreeListByQuantity = ({ data }) => {
 
   return (
     <>
-      {topThreeEntries.map(
-        ({ quantity, deliveryDate, productId, productName }) => {
-          return (
-            <div
-              key={productId + deliveryDate}
-            >{`${quantity} - ${productName}`}</div>
-          )
-        }
-      )}
+      {topThreeEntries.map(({ quantity, productName }, index) => {
+        return <div key={index}>{`${quantity} - ${productName}`}</div>
+      })}
     </>
   )
 }

@@ -6,8 +6,8 @@ const IncomingDeliveriesCard = ({ data }) => {
   const sortedData = data.sort(compare)
   return (
     <>
-      {sortedData.map(({ deliveryDate, productId }) => {
-        return <div key={productId + deliveryDate}>{deliveryDate}</div>
+      {sortedData.map(({ deliveryDate }, index) => {
+        return <div key={index}>{deliveryDate}</div>
       })}
     </>
   )
