@@ -1,4 +1,6 @@
 import React from 'react'
+import styled from 'styled-components'
+import DeliveryDates from './DeliveryDates'
 
 const IncomingDeliveriesCard = ({ data }) => {
   const convertedDates = data.map((entry) => {
@@ -27,33 +29,16 @@ const IncomingDeliveriesCard = ({ data }) => {
 
   return (
     <>
-      {Object.keys(deliveriesByDayBySupplier).map((deliveryDate, index) => {
-        return (
-          <div key={index}>
-            {new Date(deliveryDate).toDateString()}
-            {Object.keys(deliveriesByDayBySupplier[deliveryDate]).map(
-              (supplier, index) => {
-                return (
-                  <div key={index}>
-                    {supplier}:
-                    {deliveriesByDayBySupplier[deliveryDate][supplier].map(
-                      ({ productName, quantity }, index) => {
-                        return (
-                          <div key={index}>
-                            {productName} - {quantity}
-                          </div>
-                        )
-                      }
-                    )}
-                  </div>
-                )
-              }
-            )}
-          </div>
-        )
-      })}
+      <Wrapper>
+        <DeliveryDates deliveriesByDayBySupplier={deliveriesByDayBySupplier} />
+      </Wrapper>
     </>
   )
 }
 
 export default IncomingDeliveriesCard
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`
