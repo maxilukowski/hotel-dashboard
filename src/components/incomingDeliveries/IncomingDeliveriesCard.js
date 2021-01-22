@@ -47,7 +47,7 @@ const Wrapper = styled.ul`
   max-height: 30vh;
   overflow-y: scroll;
   li:nth-child(even) {
-    background-color: #ffe8d6;
+    background-color: rgb(255, 232, 214, 0.6);
   }
   list-style-type: none;
   margin: 0;
