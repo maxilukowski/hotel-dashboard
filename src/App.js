@@ -68,9 +68,7 @@ function App() {
 
 export default App
 
-
 const StyledLi = styled.li`
-
   background: var(--card);
   padding: 10px;
   border-radius: 5px;

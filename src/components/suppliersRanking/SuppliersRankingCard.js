@@ -1,16 +1,60 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Bar } from 'react-chartjs-2'
 
-const SuppliersRankingCard = () => {
+const SuppliersRankingCard = ({ data }) => {
+  let topThreeSupplier = {}
+
+  data.forEach(({ supplier, quantity, price }) => {
+    if (!topThreeSupplier.hasOwnProperty(supplier)) {
+      topThreeSupplier[supplier] = {
+        totalQuantity: 0,
+        totalPrice: 0,
+      }
+    }
+    topThreeSupplier[supplier].totalQuantity += Number(quantity)
+    topThreeSupplier[supplier].totalPrice += Number(price * quantity)
+  })
+
   return (
     <Wrapper>
-      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nihil voluptatem
-      culpa deserunt voluptate laudantium tempore asperiores? Facere veritatis,
-      doloribus officiis voluptas quasi repudiandae ex dolore vero, iste
-      laboriosam soluta illum odit nam necessitatibus explicabo officia fugiat
-      hic eveniet alias impedit aperiam natus perspiciatis quo. Labore dolores
-      nostrum illo. Consequatur incidunt suscipit temporibus fuga nihil nostrum,
-      maxime facilis, natus beatae
+      <Bar
+        data={{
+          labels: Object.keys(topThreeSupplier),
+          datasets: [
+            {
+              label: 'by amount',
+              data: [
+                topThreeSupplier['Yum Food'].totalQuantity,
+                topThreeSupplier['Booz drinks'].totalQuantity,
+                topThreeSupplier['Allstuff supplies'].totalQuantity,
+              ],
+              backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+              ],
+              borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+              ],
+              borderWidth: 1,
+            },
+          ],
+        }}
+        options={{
+          scales: {
+            yAxes: [
+              {
+                ticks: {
+                  beginAtZero: true,
+                },
+              },
+            ],
+          },
+        }}
+      />
     </Wrapper>
   )
 }
