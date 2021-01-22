@@ -1,8 +1,9 @@
 import React from 'react'
+import styled from 'styled-components'
 
 const SuppliersRankingCard = () => {
   return (
-    <div>
+    <Wrapper>
       Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nihil voluptatem
       culpa deserunt voluptate laudantium tempore asperiores? Facere veritatis,
       doloribus officiis voluptas quasi repudiandae ex dolore vero, iste
@@ -10,8 +11,12 @@ const SuppliersRankingCard = () => {
       hic eveniet alias impedit aperiam natus perspiciatis quo. Labore dolores
       nostrum illo. Consequatur incidunt suscipit temporibus fuga nihil nostrum,
       maxime facilis, natus beatae
-    </div>
+    </Wrapper>
   )
 }
 
 export default SuppliersRankingCard
+
+const Wrapper = styled.div`
+  padding: 10px;
+`

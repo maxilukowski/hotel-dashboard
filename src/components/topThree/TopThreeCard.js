@@ -3,30 +3,34 @@ import styled from 'styled-components'
 import TopThreeListByQuantity from './TopThreeListByQuantity'
 import TopThreeListByValue from './TopThreeListByValue'
 
-const TopThreeCard = () => {
+const TopThreeCard = ({ data }) => {
   const [toggleValueVsQuantity, setToggleValueVsQuantity] = useState(true)
   return (
-    <>
-      <Container>
+    <Wrapper>
+      <Headline>
         <h1>Top Three</h1>
         <StyledButton
           onClick={() => setToggleValueVsQuantity(!toggleValueVsQuantity)}
         >
           {toggleValueVsQuantity ? 'value' : 'quantity'}
         </StyledButton>
-      </Container>
+      </Headline>
       {toggleValueVsQuantity ? (
-        <TopThreeListByQuantity />
+        <TopThreeListByQuantity data={data} />
       ) : (
-        <TopThreeListByValue />
+        <TopThreeListByValue data={data} />
       )}
-    </>
+    </Wrapper>
   )
 }
 
 export default TopThreeCard
 
-const Container = styled.div`
+const Wrapper = styled.div`
+  padding: 10px;
+`
+
+const Headline = styled.div`
   display: flex;
   justify-content: space-between;
 `
