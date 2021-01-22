@@ -17,7 +17,7 @@ export default createGlobalStyle`
         height: 100vh;
         margin: 40px auto;
         padding: 20px;
-        max-width:600px;
+        max-width:700px;
         font-family:sans-serif;
         background-color: var(--primary);
     }

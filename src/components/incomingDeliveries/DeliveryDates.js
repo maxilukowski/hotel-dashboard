@@ -23,9 +23,10 @@ const DeliveryDate = ({ deliveriesByDayBySupplier }) => {
 
 export default DeliveryDate
 
-const Wrapper = styled.div`
+const Wrapper = styled.li`
   display: flex;
   margin-bottom: 15px;
+  padding: 10px;
 `
 
 const DeliveryDateDiv = styled.div`
