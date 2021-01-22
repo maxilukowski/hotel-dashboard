@@ -1,4 +1,5 @@
 import React from 'react'
+import styled from 'styled-components'
 import Supplies from './Supplies'
 
 const Supplier = ({ deliveriesByDay }) => {
@@ -6,10 +7,10 @@ const Supplier = ({ deliveriesByDay }) => {
     <>
       {Object.keys(deliveriesByDay).map((supplier, index) => {
         return (
-          <div key={index}>
+          <Wrapper key={index}>
             {supplier}:
             <Supplies deliveriesByDay={deliveriesByDay[supplier]} />
-          </div>
+          </Wrapper>
         )
       })}
     </>
@@ -17,3 +18,8 @@ const Supplier = ({ deliveriesByDay }) => {
 }
 
 export default Supplier
+
+const Wrapper = styled.div`
+  margin-right: 10px;
+  width: 25%;
+`

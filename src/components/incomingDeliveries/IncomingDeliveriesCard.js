@@ -39,6 +39,11 @@ const IncomingDeliveriesCard = ({ data }) => {
 export default IncomingDeliveriesCard
 
 const Wrapper = styled.div`
+  ::-webkit-scrollbar {
+    display: none;
+  }
   display: flex;
   flex-direction: column;
+  max-height: 30vh;
+  overflow-y: scroll;
 `
