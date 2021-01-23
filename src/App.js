@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 import IncomingDeliveriesCard from './components/incomingDeliveries/IncomingDeliveriesCard'
-import OrderVolumeCard from './components/orderVolume/OrderVolumeCard'
+import TotalOrderVolumeCard from './components/totalOrderVolume/TotalorderVolumeCard'
 import SuppliersRankingCard from './components/suppliersRanking/SuppliersRankingCard'
 import TopThreeCard from './components/topThree/TopThreeCard'
 import data from './AVISIO frontend challenge orders.json'
@@ -17,7 +17,7 @@ const cardComponents = [
     id: '2',
   },
   {
-    cardName: OrderVolumeCard,
+    cardName: TotalOrderVolumeCard,
     id: '3',
   },
   {

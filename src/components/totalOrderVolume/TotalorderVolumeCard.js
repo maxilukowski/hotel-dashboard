@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const OrderVolumeCard = () => {
+const TotalOrderVolumeCard = () => {
   return (
     <Wrapper>
       Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nihil voluptatem
@@ -15,7 +15,7 @@ const OrderVolumeCard = () => {
   )
 }
 
-export default OrderVolumeCard
+export default TotalOrderVolumeCard
 
 const Wrapper = styled.div`
   padding: 10px;
