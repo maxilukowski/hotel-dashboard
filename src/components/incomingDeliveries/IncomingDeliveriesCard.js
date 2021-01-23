@@ -13,7 +13,7 @@ const IncomingDeliveriesCard = ({ data }) => {
     (a, b) => a.deliveryDate - b.deliveryDate
   )
 
-  let deliveriesByDayBySupplier = {}
+  const deliveriesByDayBySupplier = {}
   sortedData.forEach(({ deliveryDate, supplier, productName, quantity }) => {
     if (!deliveriesByDayBySupplier.hasOwnProperty(deliveryDate)) {
       deliveriesByDayBySupplier[deliveryDate] = {}

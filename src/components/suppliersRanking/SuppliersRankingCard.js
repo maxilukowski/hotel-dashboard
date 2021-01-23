@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import SuppliersRankingByQuantity from './SuppliersRankingByQuantity'
 import SuppliersRankingByPrice from './SuppliersRankingByPrice'
 
 const SuppliersRankingCard = ({ data }) => {
-  let topThreeSupplier = {}
+  const [togglePriceVsQuantity, setTogglePriceVsQuantity] = useState(true)
+  const topThreeSupplier = {}
 
   data.forEach(({ supplier, quantity, price }) => {
     if (!topThreeSupplier.hasOwnProperty(supplier)) {
@@ -19,8 +20,19 @@ const SuppliersRankingCard = ({ data }) => {
 
   return (
     <Wrapper>
-      <SuppliersRankingByQuantity topThreeSupplier={topThreeSupplier} />
-      <SuppliersRankingByPrice topThreeSupplier={topThreeSupplier} />
+      <Headline>
+        <h1>Supplier Ranking</h1>
+        <StyledButton
+          onClick={() => setTogglePriceVsQuantity(!togglePriceVsQuantity)}
+        >
+          {togglePriceVsQuantity ? 'price' : 'quantity'}
+        </StyledButton>
+      </Headline>
+      {togglePriceVsQuantity ? (
+        <SuppliersRankingByQuantity topThreeSupplier={topThreeSupplier} />
+      ) : (
+        <SuppliersRankingByPrice topThreeSupplier={topThreeSupplier} />
+      )}
     </Wrapper>
   )
 }
@@ -29,4 +41,15 @@ export default SuppliersRankingCard
 
 const Wrapper = styled.div`
   padding: 10px;
+`
+const Headline = styled.div`
+  display: flex;
+  justify-content: space-between;
+`
+const StyledButton = styled.button`
+  border: none;
+  color: var(--card);
+  background-color: var(--secondary);
+  border-radius: 5px;
+  height: 2rem;
 `
