@@ -1,16 +1,38 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
+import SuppliersRankingByQuantity from './SuppliersRankingByQuantity'
+import SuppliersRankingByPrice from './SuppliersRankingByPrice'
 
-const SuppliersRankingCard = () => {
+const SuppliersRankingCard = ({ data }) => {
+  const [togglePriceVsQuantity, setTogglePriceVsQuantity] = useState(true)
+  const topThreeSupplier = {}
+
+  data.forEach(({ supplier, quantity, price }) => {
+    if (!topThreeSupplier.hasOwnProperty(supplier)) {
+      topThreeSupplier[supplier] = {
+        totalQuantity: 0,
+        totalPrice: 0,
+      }
+    }
+    topThreeSupplier[supplier].totalQuantity += Number(quantity)
+    topThreeSupplier[supplier].totalPrice += Number(price * quantity)
+  })
+
   return (
     <Wrapper>
-      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nihil voluptatem
-      culpa deserunt voluptate laudantium tempore asperiores? Facere veritatis,
-      doloribus officiis voluptas quasi repudiandae ex dolore vero, iste
-      laboriosam soluta illum odit nam necessitatibus explicabo officia fugiat
-      hic eveniet alias impedit aperiam natus perspiciatis quo. Labore dolores
-      nostrum illo. Consequatur incidunt suscipit temporibus fuga nihil nostrum,
-      maxime facilis, natus beatae
+      <Headline>
+        <h1>Supplier Ranking</h1>
+        <StyledButton
+          onClick={() => setTogglePriceVsQuantity(!togglePriceVsQuantity)}
+        >
+          {togglePriceVsQuantity ? 'price' : 'quantity'}
+        </StyledButton>
+      </Headline>
+      {togglePriceVsQuantity ? (
+        <SuppliersRankingByQuantity topThreeSupplier={topThreeSupplier} />
+      ) : (
+        <SuppliersRankingByPrice topThreeSupplier={topThreeSupplier} />
+      )}
     </Wrapper>
   )
 }
@@ -19,4 +41,15 @@ export default SuppliersRankingCard
 
 const Wrapper = styled.div`
   padding: 10px;
+`
+const Headline = styled.div`
+  display: flex;
+  justify-content: space-between;
+`
+const StyledButton = styled.button`
+  border: none;
+  color: var(--card);
+  background-color: var(--secondary);
+  border-radius: 5px;
+  height: 2rem;
 `
