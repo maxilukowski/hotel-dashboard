@@ -60,4 +60,7 @@ const StyledButton = styled.button`
   border-radius: 5px;
   height: 2rem;
   width: 4rem;
+  :hover {
+    background-color: rgba(234, 129, 148, 1);
+  }
 `
