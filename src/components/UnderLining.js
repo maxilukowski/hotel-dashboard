@@ -8,7 +8,7 @@ const Underlining = () => {
 export default Underlining
 
 const UnderliningDiv = styled.div`
-  background-color: rgb(234 129 148);
+  background-color: var(--secondary);
   height: 2px;
   width: 100%;
 

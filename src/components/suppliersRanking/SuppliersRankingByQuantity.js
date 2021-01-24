@@ -17,9 +17,9 @@ const SuppliersRankingByQuantity = ({ topThreeSupplier }) => {
                 topThreeSupplier['Allstuff supplies'].totalQuantity,
               ],
               backgroundColor: [
-                'rgba(234, 129, 148, 1)',
-                'rgba(69, 123, 157, 1)',
-                'rgba(129, 178, 154, 1)',
+                'rgba(234, 129, 148, 0.8)',
+                'rgba(69, 123, 157, 0.8)',
+                'rgba(129, 178, 154, 0.8)',
               ],
             },
           ],

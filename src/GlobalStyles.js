@@ -3,7 +3,7 @@ import { createGlobalStyle } from 'styled-components'
 export default createGlobalStyle`
 :root {
     --primary: #417a90;
-    --secondary: rgba(234, 129, 148, 0.9);
+    --secondary: rgba(234, 129, 148, 0.8);
     --card: #fdfdfd
     }
 
