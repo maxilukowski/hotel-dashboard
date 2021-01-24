@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import Supplier from './Supplier'
+import PropTypes from 'prop-types'
 
 const DeliveryDate = ({ deliveriesByDayBySupplier }) => {
   return (
@@ -22,7 +23,9 @@ const DeliveryDate = ({ deliveriesByDayBySupplier }) => {
     </>
   )
 }
-
+DeliveryDate.propTypes = {
+  deliveriesByDayBySupplier: PropTypes.object.isRequired,
+}
 export default DeliveryDate
 
 const Wrapper = styled.li`

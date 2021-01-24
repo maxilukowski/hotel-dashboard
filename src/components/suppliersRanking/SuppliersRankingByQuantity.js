@@ -1,5 +1,6 @@
 import React from 'react'
 import { Bar } from 'react-chartjs-2'
+import PropTypes from 'prop-types'
 
 const SuppliersRankingByQuantity = ({ topThreeSupplier }) => {
   return (
@@ -43,6 +44,9 @@ const SuppliersRankingByQuantity = ({ topThreeSupplier }) => {
       />
     </div>
   )
+}
+SuppliersRankingByQuantity.propTypes = {
+  topThreeSupplier: PropTypes.object.isRequired,
 }
 
 export default SuppliersRankingByQuantity

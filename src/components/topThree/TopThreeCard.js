@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import TopThreeListByQuantity from './TopThreeListByQuantity'
 import TopThreeListByValue from './TopThreeListByValue'
+import PropTypes from 'prop-types'
 
 const TopThreeCard = ({ data }) => {
   const [toggleValueVsQuantity, setToggleValueVsQuantity] = useState(true)
@@ -23,7 +24,9 @@ const TopThreeCard = ({ data }) => {
     </Wrapper>
   )
 }
-
+TopThreeCard.propTypes = {
+  data: PropTypes.array.isRequired,
+}
 export default TopThreeCard
 
 const Wrapper = styled.div`

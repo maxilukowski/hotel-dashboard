@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import SuppliersRankingByQuantity from './SuppliersRankingByQuantity'
 import SuppliersRankingByPrice from './SuppliersRankingByPrice'
+import PropTypes from 'prop-types'
 
 const SuppliersRankingCard = ({ data }) => {
   const [togglePriceVsQuantity, setTogglePriceVsQuantity] = useState(true)
@@ -35,6 +36,9 @@ const SuppliersRankingCard = ({ data }) => {
       )}
     </Wrapper>
   )
+}
+SuppliersRankingCard.propTypes = {
+  data: PropTypes.array.isRequired,
 }
 
 export default SuppliersRankingCard

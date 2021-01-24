@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 const TopThreeListByQuantity = ({ data }) => {
   const compare = (a, b) => b.quantity - a.quantity
@@ -13,5 +14,7 @@ const TopThreeListByQuantity = ({ data }) => {
     </>
   )
 }
-
+TopThreeListByQuantity.propTypes = {
+  data: PropTypes.array.isRequired,
+}
 export default TopThreeListByQuantity

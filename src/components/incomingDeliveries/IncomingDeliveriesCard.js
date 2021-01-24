@@ -1,18 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 import DeliveryDates from './DeliveryDates'
+import PropTypes from 'prop-types'
 
 const IncomingDeliveriesCard = ({ data }) => {
-  /*   const convertedDates = data.map((entry) => {
-    const deliveryDate = new Date(entry.deliveryDate)
-
-    return { ...entry, deliveryDate }
-  })
-
-  const sortedData = convertedDates.sort(
-    (a, b) => a.deliveryDate - b.deliveryDate
-  ) */
-
   const deliveriesByDayBySupplier = {}
   data.forEach(({ formattedDeliveryDate, supplier, productName, quantity }) => {
     if (!deliveriesByDayBySupplier.hasOwnProperty(formattedDeliveryDate)) {
@@ -36,6 +27,9 @@ const IncomingDeliveriesCard = ({ data }) => {
       </Wrapper>
     </>
   )
+}
+IncomingDeliveriesCard.propTypes = {
+  data: PropTypes.array.isRequired,
 }
 
 export default IncomingDeliveriesCard

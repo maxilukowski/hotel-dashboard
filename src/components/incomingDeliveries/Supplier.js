@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import Supplies from './Supplies'
+import PropTypes from 'prop-types'
 
 const Supplier = ({ deliveriesByDay }) => {
   return (
@@ -15,6 +16,9 @@ const Supplier = ({ deliveriesByDay }) => {
       })}
     </>
   )
+}
+Supplier.propTypes = {
+  deliveriesByDay: PropTypes.object.isRequired,
 }
 
 export default Supplier
