@@ -46,7 +46,7 @@ const TotalOrderVolumeCard = ({ data }) => {
     <Wrapper>
       <Headline>
         <h1>Total Order Volume</h1>
-        <select
+        <StyledSelect
           value={appliedFilter}
           onChange={(e) => setAppliedFilter(e.target.value)}
         >
@@ -57,7 +57,7 @@ const TotalOrderVolumeCard = ({ data }) => {
               </option>
             )
           })}
-        </select>
+        </StyledSelect>
       </Headline>
       <Underlining />
       <div>
@@ -105,4 +105,10 @@ const Wrapper = styled.div`
 const Headline = styled.div`
   display: flex;
   justify-content: space-between;
+`
+
+const StyledSelect = styled.select`
+  outline: none;
+  border-color: var(--secondary);
+  border-radius: 5px;
 `
