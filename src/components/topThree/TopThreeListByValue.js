@@ -3,6 +3,7 @@ import data from './../../AVISIO frontend challenge orders.json'
 import styled from 'styled-components'
 
 const TopThreeListByValue = () => {
+  //get top3 supplier by total order value
   const compare = (a, b) => b.quantity * b.price - a.quantity * a.price
   const sortedData = [...data].sort(compare)
   const topThreeEntries = sortedData.slice(0, 3)

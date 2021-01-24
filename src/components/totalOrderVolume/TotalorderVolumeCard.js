@@ -6,11 +6,12 @@ import Underlining from '../UnderLining'
 
 const TotalOrderVolumeCard = ({ data }) => {
   const [appliedFilter, setAppliedFilter] = useState('total')
-  const timeSpan = [
+
+  const uniqueDeliveryDates = [
     ...new Set(data.map((entry) => entry.formattedDeliveryDate)),
   ]
 
-  const filteredSelectboxOptions = [
+  const selectboxOptions = [
     ...new Set(data.map((entry) => entry.supplier)),
     ...new Set(data.map((entry) => entry.productCategory1)),
     ...new Set(data.map((entry) => entry.productCategory2)),
@@ -25,13 +26,16 @@ const TotalOrderVolumeCard = ({ data }) => {
     )
   }
 
-  const orderVolume = []
+  const orderVolumeEachDay = []
+
   const filteredData =
     appliedFilter === 'total'
       ? [...data]
       : [...data.filter((entry) => appliedFilterExists(entry, appliedFilter))]
 
-  timeSpan.forEach((formattedDeliveryDate, index) => {
+  // creates an entry in orderVolumeEachDay with the sum of each day for each
+  // applied filter/selectboxOption
+  uniqueDeliveryDates.forEach((formattedDeliveryDate, index) => {
     const entriesPerDay = filteredData.filter((entry) => {
       return formattedDeliveryDate === entry.formattedDeliveryDate
     })
@@ -39,7 +43,7 @@ const TotalOrderVolumeCard = ({ data }) => {
     const sumOfDay = entriesPerDay.reduce((sum, current) => {
       return sum + Number(current.price * current.quantity)
     }, 0)
-    orderVolume[index] = sumOfDay
+    orderVolumeEachDay[index] = sumOfDay
   })
 
   return (
@@ -50,7 +54,7 @@ const TotalOrderVolumeCard = ({ data }) => {
           value={appliedFilter}
           onChange={(e) => setAppliedFilter(e.target.value)}
         >
-          {filteredSelectboxOptions.map((entry, index) => {
+          {selectboxOptions.map((entry, index) => {
             return (
               <option key={index} value={entry}>
                 {entry}
@@ -63,11 +67,11 @@ const TotalOrderVolumeCard = ({ data }) => {
       <div>
         <Line
           data={{
-            labels: timeSpan,
+            labels: uniqueDeliveryDates,
             datasets: [
               {
                 label: appliedFilter,
-                data: orderVolume,
+                data: orderVolumeEachDay,
 
                 borderColor: 'rgba(234, 129, 148, 1)',
                 backgroundColor: 'rgba(234, 129, 148, 1)',

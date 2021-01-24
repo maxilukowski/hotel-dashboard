@@ -7,6 +7,8 @@ import Underlining from '../UnderLining'
 
 const SuppliersRankingCard = ({ data }) => {
   const [togglePriceVsQuantity, setTogglePriceVsQuantity] = useState(true)
+
+  // topThreeSuppliere stores each supplier with total price & total quantity
   const topThreeSupplier = {}
 
   data.forEach(({ supplier, quantity, price }) => {

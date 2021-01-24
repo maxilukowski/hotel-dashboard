@@ -5,7 +5,12 @@ import PropTypes from 'prop-types'
 import Underlining from '../UnderLining'
 
 const IncomingDeliveriesCard = ({ data }) => {
+  // deliveriesByDayBySupplier stores the orderamount by each supplier for each day
   const deliveriesByDayBySupplier = {}
+
+  // creates initial entries for unique deliverydays
+  // each day then gets a supplier entry in which the ordered product and the
+  // ordered quantity gets pushed into
   data.forEach(({ formattedDeliveryDate, supplier, productName, quantity }) => {
     if (!deliveriesByDayBySupplier.hasOwnProperty(formattedDeliveryDate)) {
       deliveriesByDayBySupplier[formattedDeliveryDate] = {}

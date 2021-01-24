@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 const TopThreeListByQuantity = ({ data }) => {
+  //get top3 supplier by quantity
   const compare = (a, b) => b.quantity - a.quantity
   const sortedData = [...data].sort(compare)
   const topThreeEntries = sortedData.slice(0, 3)

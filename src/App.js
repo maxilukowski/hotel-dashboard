@@ -7,6 +7,7 @@ import SuppliersRankingCard from './components/suppliersRanking/SuppliersRanking
 import TopThreeCard from './components/topThree/TopThreeCard'
 import data from './AVISIO frontend challenge orders.json'
 
+// initially sort database by the deliveryDate & add formatted delivery date entry
 const convertedDates = data.map((entry) => {
   const deliveryDate = new Date(entry.deliveryDate)
 
@@ -21,6 +22,8 @@ const sortedData = convertedDates.sort(
   (a, b) => a.deliveryDate - b.deliveryDate
 )
 
+// import card components and give them unique id, so they become iterable for
+// drag&drop lib
 const cardComponents = [
   {
     cardName: TopThreeCard,
