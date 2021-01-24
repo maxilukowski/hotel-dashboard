@@ -89,6 +89,7 @@ const StyledLi = styled.li`
   padding: 10px;
   border-radius: 5px;
   margin-bottom: 20px;
+  box-shadow: 0 4px 8px 0 rgba(68, 68, 68, 1);
 `
 const StyledList = styled.ul`
   list-style-type: none;
