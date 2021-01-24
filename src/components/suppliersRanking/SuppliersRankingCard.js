@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import SuppliersRankingByQuantity from './SuppliersRankingByQuantity'
 import SuppliersRankingByPrice from './SuppliersRankingByPrice'
 import PropTypes from 'prop-types'
+import Underlining from '../UnderLining'
 
 const SuppliersRankingCard = ({ data }) => {
   const [togglePriceVsQuantity, setTogglePriceVsQuantity] = useState(true)
@@ -29,6 +30,7 @@ const SuppliersRankingCard = ({ data }) => {
           {togglePriceVsQuantity ? 'price' : 'quantity'}
         </StyledButton>
       </Headline>
+      <Underlining />
       {togglePriceVsQuantity ? (
         <SuppliersRankingByQuantity topThreeSupplier={topThreeSupplier} />
       ) : (
@@ -52,8 +54,10 @@ const Headline = styled.div`
 `
 const StyledButton = styled.button`
   border: none;
+  outline: none;
   color: var(--card);
   background-color: var(--secondary);
   border-radius: 5px;
   height: 2rem;
+  width: 4rem;
 `

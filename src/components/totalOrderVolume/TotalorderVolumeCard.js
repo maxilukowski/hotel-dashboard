@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import { Line } from 'react-chartjs-2'
 import PropTypes from 'prop-types'
+import Underlining from '../UnderLining'
 
 const TotalOrderVolumeCard = ({ data }) => {
   const [appliedFilter, setAppliedFilter] = useState('total')
@@ -43,19 +44,22 @@ const TotalOrderVolumeCard = ({ data }) => {
 
   return (
     <Wrapper>
-      <h1>Total Order Volume</h1>
-      <select
-        value={appliedFilter}
-        onChange={(e) => setAppliedFilter(e.target.value)}
-      >
-        {filteredSelectboxOptions.map((entry, index) => {
-          return (
-            <option key={index} value={entry}>
-              {entry}
-            </option>
-          )
-        })}
-      </select>
+      <Headline>
+        <h1>Total Order Volume</h1>
+        <select
+          value={appliedFilter}
+          onChange={(e) => setAppliedFilter(e.target.value)}
+        >
+          {filteredSelectboxOptions.map((entry, index) => {
+            return (
+              <option key={index} value={entry}>
+                {entry}
+              </option>
+            )
+          })}
+        </select>
+      </Headline>
+      <Underlining />
       <div>
         <Line
           data={{
@@ -64,9 +68,10 @@ const TotalOrderVolumeCard = ({ data }) => {
               {
                 label: appliedFilter,
                 data: orderVolume,
-                backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                borderColor: 'rgba(255, 99, 132, 1)',
 
+                borderColor: 'rgba(234, 129, 148, 1)',
+                backgroundColor: 'rgba(234, 129, 148, 1)',
+                fill: false,
                 borderWidth: 1,
               },
             ],
@@ -96,4 +101,8 @@ export default TotalOrderVolumeCard
 
 const Wrapper = styled.div`
   padding: 10px;
+`
+const Headline = styled.div`
+  display: flex;
+  justify-content: space-between;
 `
