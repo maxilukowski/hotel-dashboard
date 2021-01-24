@@ -2,14 +2,16 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import { Line } from 'react-chartjs-2'
 import PropTypes from 'prop-types'
+import Underlining from '../UnderLining'
 
 const TotalOrderVolumeCard = ({ data }) => {
   const [appliedFilter, setAppliedFilter] = useState('total')
-  const timeSpan = [
+
+  const uniqueDeliveryDates = [
     ...new Set(data.map((entry) => entry.formattedDeliveryDate)),
   ]
 
-  const filteredSelectboxOptions = [
+  const selectboxOptions = [
     ...new Set(data.map((entry) => entry.supplier)),
     ...new Set(data.map((entry) => entry.productCategory1)),
     ...new Set(data.map((entry) => entry.productCategory2)),
@@ -24,13 +26,16 @@ const TotalOrderVolumeCard = ({ data }) => {
     )
   }
 
-  const orderVolume = []
+  const orderVolumeEachDay = []
+
   const filteredData =
     appliedFilter === 'total'
       ? [...data]
       : [...data.filter((entry) => appliedFilterExists(entry, appliedFilter))]
 
-  timeSpan.forEach((formattedDeliveryDate, index) => {
+  // creates an entry in orderVolumeEachDay with the sum of each day for each
+  // applied filter/selectboxOption
+  uniqueDeliveryDates.forEach((formattedDeliveryDate, index) => {
     const entriesPerDay = filteredData.filter((entry) => {
       return formattedDeliveryDate === entry.formattedDeliveryDate
     })
@@ -38,35 +43,39 @@ const TotalOrderVolumeCard = ({ data }) => {
     const sumOfDay = entriesPerDay.reduce((sum, current) => {
       return sum + Number(current.price * current.quantity)
     }, 0)
-    orderVolume[index] = sumOfDay
+    orderVolumeEachDay[index] = sumOfDay
   })
 
   return (
     <Wrapper>
-      <h1>Total Order Volume</h1>
-      <select
-        value={appliedFilter}
-        onChange={(e) => setAppliedFilter(e.target.value)}
-      >
-        {filteredSelectboxOptions.map((entry, index) => {
-          return (
-            <option key={index} value={entry}>
-              {entry}
-            </option>
-          )
-        })}
-      </select>
+      <Headline>
+        <h1>Total Order Volume</h1>
+        <StyledSelect
+          value={appliedFilter}
+          onChange={(e) => setAppliedFilter(e.target.value)}
+        >
+          {selectboxOptions.map((entry, index) => {
+            return (
+              <option key={index} value={entry}>
+                {entry}
+              </option>
+            )
+          })}
+        </StyledSelect>
+      </Headline>
+      <Underlining />
       <div>
         <Line
           data={{
-            labels: timeSpan,
+            labels: uniqueDeliveryDates,
             datasets: [
               {
                 label: appliedFilter,
-                data: orderVolume,
-                backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                borderColor: 'rgba(255, 99, 132, 1)',
+                data: orderVolumeEachDay,
 
+                borderColor: 'rgba(234, 129, 148, 1)',
+                backgroundColor: 'rgba(234, 129, 148, 1)',
+                fill: false,
                 borderWidth: 1,
               },
             ],
@@ -96,4 +105,14 @@ export default TotalOrderVolumeCard
 
 const Wrapper = styled.div`
   padding: 10px;
+`
+const Headline = styled.div`
+  display: flex;
+  justify-content: space-between;
+`
+
+const StyledSelect = styled.select`
+  outline: none;
+  border-color: var(--secondary);
+  border-radius: 5px;
 `

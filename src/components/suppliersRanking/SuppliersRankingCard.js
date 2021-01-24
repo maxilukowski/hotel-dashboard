@@ -2,9 +2,13 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import SuppliersRankingByQuantity from './SuppliersRankingByQuantity'
 import SuppliersRankingByPrice from './SuppliersRankingByPrice'
+import PropTypes from 'prop-types'
+import Underlining from '../UnderLining'
 
 const SuppliersRankingCard = ({ data }) => {
   const [togglePriceVsQuantity, setTogglePriceVsQuantity] = useState(true)
+
+  // topThreeSuppliere stores each supplier with total price & total quantity
   const topThreeSupplier = {}
 
   data.forEach(({ supplier, quantity, price }) => {
@@ -28,6 +32,7 @@ const SuppliersRankingCard = ({ data }) => {
           {togglePriceVsQuantity ? 'price' : 'quantity'}
         </StyledButton>
       </Headline>
+      <Underlining />
       {togglePriceVsQuantity ? (
         <SuppliersRankingByQuantity topThreeSupplier={topThreeSupplier} />
       ) : (
@@ -35,6 +40,9 @@ const SuppliersRankingCard = ({ data }) => {
       )}
     </Wrapper>
   )
+}
+SuppliersRankingCard.propTypes = {
+  data: PropTypes.array.isRequired,
 }
 
 export default SuppliersRankingCard
@@ -48,8 +56,13 @@ const Headline = styled.div`
 `
 const StyledButton = styled.button`
   border: none;
+  outline: none;
   color: var(--card);
   background-color: var(--secondary);
   border-radius: 5px;
   height: 2rem;
+  width: 4rem;
+  :hover {
+    background-color: rgba(234, 129, 148, 1);
+  }
 `

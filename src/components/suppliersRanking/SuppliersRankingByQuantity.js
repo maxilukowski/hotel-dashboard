@@ -1,5 +1,6 @@
 import React from 'react'
 import { Bar } from 'react-chartjs-2'
+import PropTypes from 'prop-types'
 
 const SuppliersRankingByQuantity = ({ topThreeSupplier }) => {
   return (
@@ -16,16 +17,10 @@ const SuppliersRankingByQuantity = ({ topThreeSupplier }) => {
                 topThreeSupplier['Allstuff supplies'].totalQuantity,
               ],
               backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
+                'rgba(234, 129, 148, 0.8)',
+                'rgba(69, 123, 157, 0.8)',
+                'rgba(129, 178, 154, 0.8)',
               ],
-              borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-              ],
-              borderWidth: 1,
             },
           ],
         }}
@@ -43,6 +38,9 @@ const SuppliersRankingByQuantity = ({ topThreeSupplier }) => {
       />
     </div>
   )
+}
+SuppliersRankingByQuantity.propTypes = {
+  topThreeSupplier: PropTypes.object.isRequired,
 }
 
 export default SuppliersRankingByQuantity
