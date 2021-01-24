@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import DeliveryDates from './DeliveryDates'
 
 const IncomingDeliveriesCard = ({ data }) => {
-  const convertedDates = data.map((entry) => {
+  /*   const convertedDates = data.map((entry) => {
     const deliveryDate = new Date(entry.deliveryDate)
 
     return { ...entry, deliveryDate }
@@ -11,17 +11,19 @@ const IncomingDeliveriesCard = ({ data }) => {
 
   const sortedData = convertedDates.sort(
     (a, b) => a.deliveryDate - b.deliveryDate
-  )
+  ) */
 
   const deliveriesByDayBySupplier = {}
-  sortedData.forEach(({ deliveryDate, supplier, productName, quantity }) => {
-    if (!deliveriesByDayBySupplier.hasOwnProperty(deliveryDate)) {
-      deliveriesByDayBySupplier[deliveryDate] = {}
+  data.forEach(({ formattedDeliveryDate, supplier, productName, quantity }) => {
+    if (!deliveriesByDayBySupplier.hasOwnProperty(formattedDeliveryDate)) {
+      deliveriesByDayBySupplier[formattedDeliveryDate] = {}
     }
-    if (!deliveriesByDayBySupplier[deliveryDate].hasOwnProperty(supplier)) {
-      deliveriesByDayBySupplier[deliveryDate][supplier] = []
+    if (
+      !deliveriesByDayBySupplier[formattedDeliveryDate].hasOwnProperty(supplier)
+    ) {
+      deliveriesByDayBySupplier[formattedDeliveryDate][supplier] = []
     }
-    deliveriesByDayBySupplier[deliveryDate][supplier].push({
+    deliveriesByDayBySupplier[formattedDeliveryDate][supplier].push({
       productName,
       quantity,
     })

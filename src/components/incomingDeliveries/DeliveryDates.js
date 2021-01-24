@@ -5,18 +5,20 @@ import Supplier from './Supplier'
 const DeliveryDate = ({ deliveriesByDayBySupplier }) => {
   return (
     <>
-      {Object.keys(deliveriesByDayBySupplier).map((deliveryDate, index) => {
-        return (
-          <Wrapper key={index}>
-            <DeliveryDateDiv>
-              {new Date(deliveryDate).toDateString()}
-            </DeliveryDateDiv>
-            <Supplier
-              deliveriesByDay={deliveriesByDayBySupplier[deliveryDate]}
-            />
-          </Wrapper>
-        )
-      })}
+      {Object.keys(deliveriesByDayBySupplier).map(
+        (formattedDeliveryDate, index) => {
+          return (
+            <Wrapper key={index}>
+              <DeliveryDateDiv>{formattedDeliveryDate}</DeliveryDateDiv>
+              <Supplier
+                deliveriesByDay={
+                  deliveriesByDayBySupplier[formattedDeliveryDate]
+                }
+              />
+            </Wrapper>
+          )
+        }
+      )}
     </>
   )
 }

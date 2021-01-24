@@ -7,6 +7,20 @@ import SuppliersRankingCard from './components/suppliersRanking/SuppliersRanking
 import TopThreeCard from './components/topThree/TopThreeCard'
 import data from './AVISIO frontend challenge orders.json'
 
+const convertedDates = data.map((entry) => {
+  const deliveryDate = new Date(entry.deliveryDate)
+
+  return {
+    ...entry,
+    deliveryDate,
+    formattedDeliveryDate: deliveryDate.toDateString(),
+  }
+})
+
+const sortedData = convertedDates.sort(
+  (a, b) => a.deliveryDate - b.deliveryDate
+)
+
 const cardComponents = [
   {
     cardName: TopThreeCard,
@@ -51,7 +65,9 @@ function App() {
                         {...provided.dragHandleProps}
                         ref={provided.innerRef}
                       >
-                        {React.createElement(cardName, { data })}
+                        {React.createElement(cardName, {
+                          data: sortedData,
+                        })}
                       </StyledLi>
                     )}
                   </Draggable>
