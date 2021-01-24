@@ -36,7 +36,7 @@ const TotalOrderVolumeCard = ({ data }) => {
     })
 
     const sumOfDay = entriesPerDay.reduce((sum, current) => {
-      return sum + Number(current.price)
+      return sum + Number(current.price * current.quantity)
     }, 0)
     orderVolume[index] = sumOfDay
   })
