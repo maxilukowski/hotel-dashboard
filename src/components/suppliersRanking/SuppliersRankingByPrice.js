@@ -12,9 +12,9 @@ const SuppliersRankingByPrice = ({ topThreeSupplier }) => {
             {
               label: 'Total Price',
               data: [
-                topThreeSupplier['Yum Food'].totalPrice,
-                topThreeSupplier['Booz drinks'].totalPrice,
-                topThreeSupplier['Allstuff supplies'].totalPrice,
+                topThreeSupplier['Yum Food'].totalPrice.toFixed(2),
+                topThreeSupplier['Booz drinks'].totalPrice.toFixed(2),
+                topThreeSupplier['Allstuff supplies'].totalPrice.toFixed(2),
               ],
               backgroundColor: [
                 'rgba(234, 129, 148, 1)',
