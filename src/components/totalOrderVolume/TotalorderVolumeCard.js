@@ -51,6 +51,7 @@ const TotalOrderVolumeCard = ({ data }) => {
       <Headline>
         <h1>Total Order Volume</h1>
         <StyledSelect
+          data-testid='orderVolume-selectbox'
           value={appliedFilter}
           onChange={(e) => setAppliedFilter(e.target.value)}
         >

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 
 const SuppliersRankingByPrice = ({ topThreeSupplier }) => {
   return (
-    <div>
+    <div data-testid='chart-container-rankingByPrice'>
       <Bar
         data={{
           labels: Object.keys(topThreeSupplier),
