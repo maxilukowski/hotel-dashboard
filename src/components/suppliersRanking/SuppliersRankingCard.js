@@ -25,8 +25,16 @@ const SuppliersRankingCard = ({ data }) => {
   return (
     <Wrapper>
       <Headline>
-        <h1>Supplier Ranking</h1>
+        <h1>
+          Supplier Ranking{' '}
+          {togglePriceVsQuantity ? (
+            <span data-testid='total-quantity' />
+          ) : (
+            <span data-testid='total-price' />
+          )}
+        </h1>
         <StyledButton
+          data-testid='supplier-ranking-toggle-button'
           onClick={() => setTogglePriceVsQuantity(!togglePriceVsQuantity)}
         >
           {togglePriceVsQuantity ? 'price' : 'quantity'}

@@ -26,7 +26,7 @@ const TopThreeListByValue = () => {
 export default TopThreeListByValue
 
 const StyledDiv = styled.div`
-  width: 20vw;
+  width: 30%;
   display: flex;
   justify-content: space-between;
 `

@@ -12,6 +12,7 @@ const TopThreeCard = ({ data }) => {
       <Headline>
         <h1>Best Seller</h1>
         <StyledButton
+          data-testid='top3-toggle-button'
           onClick={() => setToggleValueVsQuantity(!toggleValueVsQuantity)}
         >
           {toggleValueVsQuantity ? 'value' : 'quantity'}

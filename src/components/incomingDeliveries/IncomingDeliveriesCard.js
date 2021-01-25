@@ -28,7 +28,7 @@ const IncomingDeliveriesCard = ({ data }) => {
 
   return (
     <>
-      <Wrapper>
+      <Wrapper data-testid='incomingDeliveriesCard'>
         <Headline>
           <h1>Incoming Deliveries</h1>
           <ColorCodeWrapper>
